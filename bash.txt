@@ -1,6 +1,0 @@
-# en tu carpeta local del proyecto
-git pull          # por si alguien tocó algo
-# sustituye el contenido de index.html por el mostrado arriba
-git add index.html
-git commit -m "Requiere clic para activar webhook"
-git push origin main
