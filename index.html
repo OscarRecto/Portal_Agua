@@ -2,17 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Acción NFC</title>
+  <title>Portal Agua</title>
+  <!-- Evita que el navegador almacene o precargue la página -->
+  <meta http-equiv="Cache-Control" content="no-store">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 2rem; }
-    .ok { color: green; font-size: 10.2rem; }
+    body   { font-family:sans-serif; text-align:center; padding:3rem; }
+    button { font-size:2rem; padding:1rem 2rem; border:none;
+             border-radius:8px; cursor:pointer; }
+    #ok    { color:green; font-size:2.5rem; margin-top:2rem; display:none; }
   </style>
 </head>
 <body>
-  <p class="ok">✅ PUERTA ABIERTA.</p>
+  <h1>Portal Agua</h1>
+
+  <!-- Botón que el usuario debe pulsar -->
+  <button id="abrir">🔓 Abrir puerta</button>
+  <p id="ok">✅ Puerta abierta.</p>
+
   <script>
-    fetch('https://pa4w8iolxvumelidtvsy5ksi3pcsburc.ui.nabu.casa/api/webhook/Cdelshorts20_Agua')
-      .catch(()=>{ /* ignorar errores */ });
+    const URL = 'https://pa4w8iolxvumelidtvsy5ksi3pcsburc.ui.nabu.casa/api/webhook/Cdelshorts20_Agua';
+
+    document.getElementById('abrir').addEventListener('click', () => {
+      fetch(URL)                         // sigue siendo GET: no cambias nada en Home Assistant
+        .then(() => document.getElementById('ok').style.display = 'block')
+        .finally(() => setTimeout(() => window.close(), 2000)); // cierra la pestaña tras 2 s
+    });
   </script>
 </body>
 </html>
