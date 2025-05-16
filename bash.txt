@@ -1,5 +1,6 @@
-git init
-git remote add origin https://github.com/oscarrecto/portal_Agua.git
+# en tu carpeta local del proyecto
+git pull          # por si alguien tocó algo
+# sustituye el contenido de index.html por el mostrado arriba
 git add index.html
-git commit -m "Página Portal_Agua"
-git push -u origin main
+git commit -m "Requiere clic para activar webhook"
+git push origin main
