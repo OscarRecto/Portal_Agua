@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Portal Agua</title>
-  <meta http-equiv="Cache-Control" content="no-store"><!-- evita cache -->
+  <meta http-equiv="Cache-Control" content="no-store">
   <style>
       body   {font-family:sans-serif;text-align:center;padding:3rem}
       button {font-size:2rem;padding:1rem 2rem;border:none;border-radius:8px;cursor:pointer}
@@ -20,16 +20,16 @@
     const URL = 'https://pa4w8iolxvumelidtvsy5ksi3pcsburc.ui.nabu.casa/api/webhook/Cdelshorts20_Agua';
 
     document.getElementById('abrir').addEventListener('click', () => {
-      /* 1 – deshabilita el botón inmediatamente */
       const btn = document.getElementById('abrir');
-      btn.disabled = true;              // no más pulsaciones
-      btn.style.visibility = 'hidden';  // lo hace desaparecer
 
-      /* 2 – lanza la petición al webhook */
+      /* 1 – desactivar y ocultar totalmente */
+      btn.disabled = true;
+      btn.style.display = 'none';       // ← ahora desaparece por completo
+      /* también serviría: btn.remove(); */
+
+      /* 2 – llamar al webhook */
       fetch(URL).finally(() => {
-        /* 3 – muestra confirmación */
         document.getElementById('ok').style.display = 'block';
-        /* 4 – vacía la pestaña para que no se re-use */
         setTimeout(() => location.replace('about:blank'), 1500);
       });
     });
